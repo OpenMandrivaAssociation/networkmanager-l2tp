@@ -9,7 +9,7 @@ Name:      NetworkManager-l2tp
 Version:   0.9.6
 Release:   1%{?dist}
 License:   GPLv2+
-Group:     System Environment/Base
+Group:     System/Base
 URL:       https://launchpad.net/~seriy-pr/+archive/network-manager-l2tp
 Source:    %{name}-%{version}.tar.gz
 
