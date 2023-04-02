@@ -1,8 +1,9 @@
 %global _disable_ld_no_undefined 1
 
-%global pppd_version %(rpm -q --qf "%{VERSION}" ppp)
+%global ppp_version %(rpm -q --qf "%{VERSION}" ppp)
+%global pppd_dir %{_libdir}/pppd/%{ppp_version}
 
-%bcond_with strongswan
+%bcond_without strongswan
 
 Summary:	NetworkManager VPN plugin for L2TP and L2TP/IPsec
 Name:		networkmanager-l2tp
@@ -33,8 +34,6 @@ Requires:	gtk+3
 Requires:	gtk4
 Requires:	NetworkManager
 Requires:	ppp = %{ppp_version}
-Requires:	pptp
-Requires:	shared-mime-info
 Requires:	xl2tpd
 
 %if %with strongswan
@@ -55,7 +54,7 @@ IPsec VPN support with 	the NetworkManager and the GNOME desktop.
 %{_libdir}/NetworkManager/libnm-vpn-plugin-l2tp.so
 %{_libdir}/NetworkManager/libnm-vpn-plugin-l2tp-editor.so
 %{_libdir}/NetworkManager/libnm-gtk4-vpn-plugin-l2tp-editor.so
-%{_libdir}/pppd/%{pppd_version}/nm-l2tp-pppd-plugin.so
+%{pppd_dir}/nm-l2tp-pppd-plugin.so
 %{_metainfodir}/network-manager-l2tp.metainfo.xml
 %ghost %attr(0600 - -) %{_sysconfdir}/ipsec.d/ipsec.nm-l2tp.secrets
 %ghost %attr(0600 - -) %{_sysconfdir}/strongswan/ipsec.d/ipsec.nm-l2tp.secrets
@@ -79,7 +78,7 @@ autoreconf -fiv
 %else
 	--with-nm-ipsec-nss-dir=%{_sharedstatedir}/ipsec/nss \
 %endif
-	--with-pppd-plugin-dir=%{_libdir}/pppd/%{pppd_version} \
+	--with-pppd-plugin-dir=%{pppd_dir} \
 	--with-dist-version=%{version}-%{release} \
 	%{nil}
 %make_build
