@@ -14,6 +14,11 @@ Group:		System Environment/Base
 Url:		https://github.com/nm-l2tp/NetworkManager-l2tp
 Source0:	https://github.com/nm-l2tp/NetworkManager-l2tp/releases/download/%{version}/NetworkManager-l2tp-%{version}.tar.xz
 
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	gettext
 BuildRequires:	intltool
 BuildRequires:	ppp-devel
