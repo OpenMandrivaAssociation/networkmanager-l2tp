@@ -8,7 +8,7 @@
 Summary:	NetworkManager VPN plugin for L2TP and L2TP/IPsec
 Name:		networkmanager-l2tp
 Version:	1.20.20
-Release:	1
+Release:	2
 License:	GPLv2+
 Group:		System Environment/Base
 Url:		https://github.com/nm-l2tp/NetworkManager-l2tp
